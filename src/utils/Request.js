@@ -1,7 +1,8 @@
 import axios from 'axios'
+import {showToast} from "vant";
 //创建axios的一个实例
-var request = axios.create({
-    baseURL:'http://localhost:3000/',//接口统一域名
+let request = axios.create({
+    baseURL: 'http://localhost:3000/',//接口统一域名
     timeout: 6000                    //设置超时
 })
 
@@ -16,10 +17,12 @@ request.interceptors.request.use(function (config) {
 
 //----------------- 二、响应拦截器 忽略
 request.interceptors.response.use(function (response) {
+    console.log(response.data)
     return response.data;
 }, function (error) {
     // 对响应错误做点什么
     console.log('拦截器报错');
+
     return Promise.reject(error);
 });
 

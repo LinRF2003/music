@@ -6,14 +6,21 @@ const routes = [
         path: '/',
         component: () => import('../layouts/BasicLayout.vue'),
         children: [
+            // 重定向首页
+            {
+              path: '/',
+              redirect:"find"
+            },
+            {
+                // 首页
+                name: '发现',
+                path: '/find',
+                component: () => import('../pages/find/Find.vue'),
+            },
             {
                 name: '我的',
                 path: '/my',
                 component: () => import('../pages/my/My.vue'),
-            }, {
-                name: '发现',
-                path: '/find',
-                component: () => import('../pages/find/Find.vue'),
             }, {
                 name: '播客',
                 path: '/podcast',
