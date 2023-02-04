@@ -36,6 +36,8 @@ const autoCarousel = () => {
     index++;
   }, 2000)
 }
+//
+
 onMounted(() => {
   autoCarousel();
 })
