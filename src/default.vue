@@ -1,0 +1,21 @@
+<template>
+
+</template>
+
+
+<script setup>
+import { getCurrentInstance, ref} from "vue";
+const { proxy } = getCurrentInstance();
+
+const a = async () => {
+  let result = await proxy.$Request.get("/playlist/catlist")
+  console.log(result)
+}
+
+
+</script>
+
+
+<style scoped>
+
+</style>
