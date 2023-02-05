@@ -1,0 +1,95 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 3880546 */
+  src: url('iconfont.woff2?t=1675526248141') format('woff2'),
+       url('iconfont.woff?t=1675526248141') format('woff'),
+       url('iconfont.ttf?t=1675526248141') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-add:before {
+  content: "\e696";
+}
+
+.icon-tuijianyouli:before {
+  content: "\e6a4";
+}
+
+.icon-sousuo:before {
+  content: "\e651";
+}
+
+.icon-xiangshangjiantou:before {
+  content: "\e65d";
+}
+
+.icon-xiangxiajiantou:before {
+  content: "\e65e";
+}
+
+.icon-xiangyoujiantou:before {
+  content: "\e65f";
+}
+
+.icon-xiangzuojiantou:before {
+  content: "\e660";
+}
+
+.icon-rili:before {
+  content: "\e600";
+}
+
+.icon-maikefeng:before {
+  content: "\e8c2";
+}
+
+.icon-shuaxin:before {
+  content: "\ec08";
+}
+
+.icon-Androidgengduo_o:before {
+  content: "\eb76";
+}
+
+.icon-song:before {
+  content: "\e66a";
+}
+
+.icon-yunhang:before {
+  content: "\ec61";
+}
+
+.icon-zanting:before {
+  content: "\e668";
+}
+
+.icon-24gf-play:before {
+  content: "\ea82";
+}
+
+.icon-guanzhu:before {
+  content: "\e6cf";
+}
+
+.icon-guanzhu1:before {
+  content: "\e8b1";
+}
+
+.icon-paihangbang:before {
+  content: "\e8b3";
+}
+
+.icon-gengduo:before {
+  content: "\e60c";
+}
+
+.icon-yinle:before {
+  content: "\e99a";
+}
+
