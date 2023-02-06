@@ -1,60 +1,67 @@
 <template>
-  <div class="contain">
-    <div id="banner">
-      <template v-for="item in imgUrl">
-        <img :src="item.url"></template>
-    </div>
+  <div class="swiperbox">
+    <swiper
+        :slidesPerView="1"
+        :spaceBetween="30"
+        :loop="true"
+        :centeredSlides="true"
+        :pagination="{
+				clickable: true
+			}"
+        :autoplay="{
+				delay: 2500,
+				disableOnInteraction: false
+			}"
+        :modules="modules"
+        class="mySwiper"
+    >
+      <swiper-slide v-for="item in props.imgUrlList"><img :src="item.url"></swiper-slide>
+    </swiper>
   </div>
 </template>
 
-
 <script setup>
+import {Swiper, SwiperSlide} from 'swiper/vue'; // swiper所需组件
+// 这是分页器和对应方法，swiper好像在6的时候就已经分离了分页器和一些其他工具
+import {Autoplay, Navigation, Pagination, A11y} from 'swiper';
+// 引入swiper样式，对应css 如果使用less或者css只需要把scss改为对应的即可
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+//默认滑动效果（这里面注释掉的可以不要）
+// const onSwiper = swiper => {
+// 	console.log(swiper);
+// };
+// const onSlideChange = e => {
+// 	// swiper切换的时候执行的方法
+// 	console.log('slide change', e.activeIndex);
+// };
+// setup语法糖只需要这样创建一个变量就可以正常使用分页器和对应功能，如果没有这个数组则无法使用对应功能
+const modules = [Autoplay, Pagination, Navigation, A11y];
+const props = defineProps({'imgUrlList':Array})
 
-import {onMounted} from "vue";
-
-const imgUrl = [
-  {index: 0, url: "http://p1.music.126.net/Q-CBMloRescSxo6S4jTbEA==/109951168283437023.jpg"},
-  {index: 1, url: "http://p1.music.126.net/SiCebVk9wpsi0ysaC-MeLw==/109951168283428940.jpg"},
-  {index: 2, url: "http://p1.music.126.net/YReqExOhpRpVv9DRVl_fYQ==/109951168283442647.jpg"},
-  {index: 3, url: "http://p1.music.126.net/Q-CBMloRescSxo6S4jTbEA==/109951168283437023.jpg"},
-]
-
-// 自动轮播方法
-const autoCarousel = () => {
-  let index = 0;
-  let banner = document.getElementById("banner")
-
-  setInterval(() => {
-    banner.style.transition = "all 2s";
-    if (index === imgUrl.length) {
-      index = 0;
-      banner.style.transition = "";
-      banner.style.transform = ``
-    } else {
-      banner.style.transform = `translateX(-${100 * index}%)`;
-    }
-    index++;
-  }, 2000)
-}
-//
-
-onMounted(() => {
-  autoCarousel();
-})
 </script>
 
-
 <style scoped lang="scss">
-.contain {
-  overflow: hidden;
+:deep(.swiper-wrapper) {
+  text-align: center;
+}
 
-  div {
-    display: flex;
+:deep(.swiper-pagination ) {
+  position: relative;
+  top: -24px;
+  left: -30%;
+}
 
-    img {
-      width: 100%;
-    }
-  }
+:deep(.swiper-pagination-bullet) {
+  width: 6px;
+  height: 6px;
+  background: #ffffff;
+}
+
+img {
+  border-radius: 16px;
+  width: 92%;
 }
 
 </style>
