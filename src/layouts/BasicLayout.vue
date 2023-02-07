@@ -7,7 +7,9 @@
     <van-tabbar-item icon="setting-o">标签</van-tabbar-item>
     <van-tabbar-item icon="setting-o">标签</van-tabbar-item>
   </van-tabbar>
-  <AudioPlay :songImgUrl="songImgUrl" :songUrl='songUrl' class="play"></AudioPlay>
+
+
+  <AudioPlay :songInfo="songInfo" :songUrl='songUrl' class="play"></AudioPlay>
 </template>
 
 
@@ -18,8 +20,8 @@ import request from "../utils/Request.js";
 import api from "../utils/api.js";
 
 const active = ref(0);
-const songInfo = ref("");
-const songUrl = ref("")
+const songInfo = ref({});
+const songUrl =ref("");
 const EverydayRecommendedSongList = ref([])
 // 获取每日推荐歌曲
 const getEverydayRecommendedSong = async () => {
@@ -29,9 +31,9 @@ const getEverydayRecommendedSong = async () => {
   if (result.code === 200) {
     EverydayRecommendedSongList.value = result.data.dailySongs;
     console.log(JSON.parse(JSON.stringify(EverydayRecommendedSongList.value)))
-    songInfo.value = EverydayRecommendedSongList.value[17]
-    console.log(result.data.dailySongs[0])
-    songUrl.value = (await api.getSongUrl(EverydayRecommendedSongList.value[17].id))[0].url;
+    songInfo.value = EverydayRecommendedSongList.value[3]
+    // console.log(result.data.dailySongs[0])
+    songUrl.value = (await api.getSongUrl(EverydayRecommendedSongList.value[3].id))[0].url;
   }
 }
 // 获取登录状态
@@ -52,7 +54,7 @@ onMounted(() => {
 
 <style scoped>
 .tabbar {
-  position: absolute;
+  position: fixed;
 }
 
 .play {

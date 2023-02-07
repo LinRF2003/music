@@ -15,7 +15,7 @@
         :modules="modules"
         class="mySwiper"
     >
-      <swiper-slide v-for="item in props.imgUrlList"><img :src="item.url"></swiper-slide>
+      <swiper-slide v-for="item in props.bannersList"><img :src="item.pic"></swiper-slide>
     </swiper>
   </div>
 </template>
@@ -38,7 +38,7 @@ import 'swiper/css/pagination';
 // };
 // setup语法糖只需要这样创建一个变量就可以正常使用分页器和对应功能，如果没有这个数组则无法使用对应功能
 const modules = [Autoplay, Pagination, Navigation, A11y];
-const props = defineProps({'imgUrlList':Array})
+const props = defineProps({'bannersList':Array})
 
 </script>
 

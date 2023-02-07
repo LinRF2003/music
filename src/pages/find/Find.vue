@@ -6,8 +6,9 @@
     <span class="icon-maikefeng iconfont"></span>
   </div>
   <!-- 轮播图 -->
-  <Carousel :imgUrlList="imgUrlList"></Carousel>
+  <Carousel :bannersList="bannersList"></Carousel>
   <!-- 滑动导航 -->
+  <SlideNav></SlideNav>
   <!-- 推荐歌单 -->
   <div class="recommended-song-sheet">
     <div class="name">推荐歌单 ></div>
@@ -21,23 +22,11 @@
 <script setup>
 import {onMounted, ref} from "vue";
 import request from "../../utils/Request.js";
+import SlideNav from '../../components/SlideNav.vue'
 
 
-let src = ref("http://m8.music.126.net/20230204210810/5ec6834e83a9be60d52fcd0ef6ccb0bc/ymusic/obj/w5zDlMODwrDDiGjCn8Ky/14052228178/1bac/ca6c/f787/9932ee1386482ef8e48f24e27379d104.mp3")
-
-const imgUrlList = [
-  {index: 0, url: "http://p1.music.126.net/Q-CBMloRescSxo6S4jTbEA==/109951168283437023.jpg"},
-  {index: 1, url: "http://p1.music.126.net/SiCebVk9wpsi0ysaC-MeLw==/109951168283428940.jpg"},
-  {index: 2, url: "http://p1.music.126.net/YReqExOhpRpVv9DRVl_fYQ==/109951168283442647.jpg"},
-  {index: 3, url: "http://p1.music.126.net/Q-CBMloRescSxo6S4jTbEA==/109951168283437023.jpg"}, {
-    index: 1,
-    url: "http://p1.music.126.net/SiCebVk9wpsi0ysaC-MeLw==/109951168283428940.jpg"
-  },
-  {index: 2, url: "http://p1.music.126.net/YReqExOhpRpVv9DRVl_fYQ==/109951168283442647.jpg"},
-  {index: 3, url: "http://p1.music.126.net/Q-CBMloRescSxo6S4jTbEA==/109951168283437023.jpg"},
-  {index: 3, url: "http://p1.music.126.net/Q-CBMloRescSxo6S4jTbEA==/109951168283437023.jpg"},
-] // 图片列表
 const recommendedSongSheetList = ref({});// 推荐歌单列表
+const bannersList = ref();
 
 // 获取歌单分类
 const songCategory = async () => {
@@ -87,9 +76,10 @@ const getEverydayRecommendedSongSheet = async () => {
 
 // 获取首页轮播图
 const getBanner = async () => {
-  let result = await request.get("/banner");
+  let result = await request.get("/banner?type=2");
   if (result.code === 200) {
-
+    console.log(result)
+    bannersList.value = result.banners
   }
 }
 
@@ -114,7 +104,7 @@ onMounted(() => {
   // getSongDeatil();
   // getRecommendedSongSheet();
   getEverydayRecommendedSongSheet();
-  // getBanner();
+  getBanner();
 
   // getUSerInfo();
   // getUserDetail();
@@ -133,7 +123,7 @@ onMounted(() => {
   }
 }
 .recommended-song-sheet{
-  padding: 0 10px;
+  padding: 10px 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;

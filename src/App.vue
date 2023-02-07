@@ -9,7 +9,5 @@
 
 
 <style scoped>
-#app {
-  height: 200%;
-}
+
 </style>

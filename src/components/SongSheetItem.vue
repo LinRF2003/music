@@ -40,8 +40,8 @@ onMounted(() => {
           contain.style.transition=' all 1s';
           return;
         }
-        if(contain.offsetLeft < -290){
-          contain.style.left = '-290px'
+        if(contain.offsetLeft < -424){
+          contain.style.left = '-424px'
           contain.style.transition=' all 1s';
           return;
         }
@@ -66,7 +66,6 @@ onMounted(() => {
 <style scoped lang="scss">
 .layer {
   overflow: hidden;
-
 
   #contain {
     display: flex;
